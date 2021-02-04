@@ -1,0 +1,17 @@
+import sqlite3
+#drop.database ('reminder1.db')
+conn=sqlite3.connect('reminder2.db')
+c=conn.cursor()
+c.execute('''CREATE TABLE tasks
+                           (completion text,
+                            taskname text PRIMARY KEY,
+                            duedate date,
+                            priority text)''')
+#c.execute('''INSERT INTO tasks VALUES ('incomplete','program','02/03/2021','imp')''');
+#c.execute('''INSERT INTO tasks VALUES ('incomplete','assignment','05/02/2021','imp')''');
+
+
+for row in c.execute('SELECT *  FROM tasks '):
+    print(row)
+conn.commit()
+                        
